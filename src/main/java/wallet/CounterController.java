@@ -22,7 +22,7 @@ public class CounterController {
 		@ResponseBody
 		public String setCounterReset(){
 			try{
-						Runtime.getRuntime().exec("curl -L http://localhost:4001/v2/keys/009433996/counter -XPUT -d value=0");
+						Runtime.getRuntime().exec("curl -L http://54.67.13.253:4001/v2/keys/009433996/counter -XPUT -d value=0");
 			}
 			catch(IOException e){
 				System.out.println(e);
@@ -35,7 +35,7 @@ public class CounterController {
 		@ResponseBody
 		public String getCounter(){
 			RestTemplate restTemplate = new RestTemplate();
-			String str = restTemplate.getForObject("http://localhost:4001/v2/keys/009433996/counter",String.class);
+			String str = restTemplate.getForObject("http://54.67.13.253:4001/v2/keys/009433996/counter",String.class);
 			System.out.println(str);
 			JSONParser jsonParser = new JSONParser();
 			try{
@@ -44,7 +44,7 @@ public class CounterController {
 				System.out.println(jsonObject);
 				counter = Integer.parseInt(((String)jsonObject.get("value")));
 				counter = counter + 1;
-				System.out.println(Runtime.getRuntime().exec("curl -L http://localhost:4001/v2/keys/009433996/counter -XPUT -d value=" + counter));
+				System.out.println(Runtime.getRuntime().exec("curl -L http://54.67.13.253:4001/v2/keys/009433996/counter -XPUT -d value=" + counter));
 			}
 			catch(ParseException e){
 				System.out.println(e);
