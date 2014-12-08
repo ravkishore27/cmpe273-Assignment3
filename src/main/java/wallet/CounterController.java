@@ -17,6 +17,14 @@ public class CounterController {
 
 		private int counter = 0;
 
+		//Healthcheck
+		@RequestMapping(value="/healthcheck", method=RequestMethod.GET)
+		@ResponseBody
+		public String healthcheck(){
+			return "Success!";
+		}
+
+
 		//CounterReset
 		@RequestMapping(value="/api/v1/counterreset", method=RequestMethod.GET)
 		@ResponseBody
